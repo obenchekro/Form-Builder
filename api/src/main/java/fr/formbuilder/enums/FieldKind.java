@@ -6,12 +6,12 @@ import lombok.*;
 
 import java.util.Locale;
 
+@Getter
 public enum FieldKind {
     INPUT("input"),
     SELECT("select"),
     SELECT_FILTER("select-filter");
 
-    @Getter
     private final String json;
 
     FieldKind(String json) {

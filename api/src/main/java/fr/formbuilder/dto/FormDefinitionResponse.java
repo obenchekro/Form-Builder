@@ -3,6 +3,7 @@ package fr.formbuilder.dto;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import fr.formbuilder.convertor.serializers.FieldLabelSerializer;
+import fr.formbuilder.convertor.serializers.StepLabelSerializer;
 import fr.formbuilder.convertor.serializers.TitleSerializer;
 import fr.formbuilder.enums.FieldType;
 import fr.formbuilder.enums.FieldKind;
@@ -20,12 +21,10 @@ import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL;
 @AllArgsConstructor
 @JsonInclude(NON_NULL)
 public class FormDefinitionResponse {
-
     @NotBlank
     private String id;
 
-    @NotBlank
-    @JsonSerialize(using = TitleSerializer.class)
+    @JsonSerialize(using = TitleSerializer.class, nullsUsing = TitleSerializer.class)
     private String title;
 
     @NotNull
@@ -53,8 +52,7 @@ public class FormDefinitionResponse {
         @NotBlank
         private String id;
 
-        @NotBlank
-        @JsonSerialize(using = FieldLabelSerializer.class)
+        @JsonSerialize(using = StepLabelSerializer.class, nullsUsing = StepLabelSerializer.class)
         private String label;
 
         @Singular
@@ -76,11 +74,11 @@ public class FormDefinitionResponse {
         @NotNull
         private FieldKind kind;
 
-        @NotBlank
-        @JsonSerialize(using = FieldLabelSerializer.class)
+        @JsonSerialize(using = FieldLabelSerializer.class, nullsUsing = FieldLabelSerializer.class)
         private String label;
 
-        private Boolean required;
+        @Builder.Default
+        private Boolean required = false;
         private Integer colSpan;
         private Boolean multiple;
 

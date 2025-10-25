@@ -1,50 +1,46 @@
 {
-  "forms": [
+  "id": "customer-form-v1",
+  "title": "Création client",
+  "layout": {
+    "columns": 12,
+    "gaps": 16
+  },
+  "steps": [
     {
-      "id": "customer-form-v1",
-      "title": "Création client",
-      "layout": {
-        "columns": 12,
-        "gaps": 16
-      },
-      "steps": [
+      "id": "identite",
+      "label": "Identité",
+      "fields": [
         {
-          "id": "identite",
-          "label": "Identité",
-          "fields": [
+          "key": "firstName",
+          "type": "text",
+          "kind": "input",
+          "label": "Prénom",
+          "required": true,
+          "colSpan": 6
+        },
+        {
+          "key": "lastName",
+          "type": "text",
+          "kind": "input",
+          "label": "Nom",
+          "required": true,
+          "colSpan": 6
+        },
+        {
+          "key": "status",
+          "type": "select",
+          "kind": "select",
+          "label": "Statut",
+          "colSpan": 6,
+          "multiple": false,
+          "options": [
             {
-              "key": "firstName",
-              "type": "text",
-              "kind": "input",
-              "label": "Prénom",
-              "required": true,
-              "colSpan": 6
+              "value": "ACTIVE",
+              "label": "Actif"
             },
             {
-              "key": "lastName",
-              "type": "text",
-              "kind": "input",
-              "label": "Nom",
-              "required": true,
-              "colSpan": 6
-            },
-            {
-              "key": "status",
-              "type": "select",
-              "kind": "select",
-              "label": "Statut",
-              "colSpan": 6,
-              "multiple": false,
-              "options": [
-                {
-                  "value": "ACTIVE",
-                  "label": "Actif"
-                },
-                {
-                  "value": "INACTIVE",
-                  "label": "Inactif"
-                }
-              ]
+              "value": "INACTIVE",
+              "label": "Inactif"
             }
           ]
         }
@@ -52,3 +48,4 @@
     }
   ]
 }
+
