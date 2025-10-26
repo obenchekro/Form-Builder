@@ -8,31 +8,34 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.List;
+
 import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL;
 
 @Data
 @Builder
 @JsonInclude(NON_NULL)
-public class ResponseData<TData, TErrorDetails> {
+public class ResponseData<T> {
     @Builder.Default
     private LocalDateTime timestamp = LocalDateTime.now();
     private int status;
     private RequestState state;
     private String message;
-    private TData data;
-    private TErrorDetails details;
+    private T data;
+    private List<ErrorDetails> details;
 
     @Data
     @AllArgsConstructor
     @NoArgsConstructor
     @Builder
     public static class ErrorDetails {
+        @JsonInclude(NON_NULL)
         private String field;
         private String message;
     }
 
-    public static <TData> ResponseData<TData, Void> success(TData data) {
-        return ResponseData.<TData, Void>builder()
+    public static <T> ResponseData<T> success(T data) {
+        return ResponseData.<T>builder()
                 .status(200)
                 .state(RequestState.SUCCESS)
                 .message("Operation successful")
@@ -40,8 +43,8 @@ public class ResponseData<TData, TErrorDetails> {
                 .build();
     }
 
-    public static <TData> ResponseData<TData, Void> success(String message, TData data) {
-        return ResponseData.<TData, Void>builder()
+    public static <T> ResponseData<T> success(String message, T data) {
+        return ResponseData.<T>builder()
                 .status(200)
                 .state(RequestState.SUCCESS)
                 .message(message)
@@ -49,8 +52,8 @@ public class ResponseData<TData, TErrorDetails> {
                 .build();
     }
 
-    public static <TErrorDetails> ResponseData<Void, TErrorDetails> error(int status, String message, TErrorDetails errorDetails) {
-        return ResponseData.<Void, TErrorDetails>builder()
+    public static <TErrorDetails> ResponseData<Void> error(int status, String message, List<ErrorDetails> errorDetails) {
+        return ResponseData.<Void>builder()
                 .status(status)
                 .state(RequestState.FAILURE)
                 .message(message)

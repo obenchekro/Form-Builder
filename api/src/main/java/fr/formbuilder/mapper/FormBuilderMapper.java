@@ -5,15 +5,13 @@ import fr.formbuilder.dto.FormDefinitionResponse;
 import fr.formbuilder.dto.FormDefinitionResponse.*;
 import lombok.experimental.UtilityClass;
 
-import java.util.stream.Collectors;
-
 @UtilityClass
 public class FormBuilderMapper {
     public FormDefinitionResponse toResponse(GenerateFormsRequest request) {
         return FormDefinitionResponse.builder()
                 .steps(request.getSteps().stream()
                         .map(FormBuilderMapper::mapStep)
-                        .collect(Collectors.toList()))
+                        .toList())
                 .layout(mapLayout(request.getDefaultLayout()))
                 .build();
     }
@@ -29,7 +27,7 @@ public class FormBuilderMapper {
         return Step.builder()
                 .fields(step.getFields().stream()
                         .map(FormBuilderMapper::mapField)
-                        .collect(Collectors.toList()))
+                        .toList())
                 .build();
     }
 

@@ -7,9 +7,6 @@ import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
-import org.springframework.lang.NonNull;
-
-import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -30,8 +27,7 @@ public class GenerateFormsRequest {
     private Integer fieldsPerStep;
     @NotEmpty
     @Valid
-    @Builder.Default
-    private List<Step> steps = new ArrayList<>();
+    private List<Step> steps;
 
     @Data
     @Builder
