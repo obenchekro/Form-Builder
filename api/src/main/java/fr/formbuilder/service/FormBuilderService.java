@@ -16,17 +16,17 @@ import java.util.stream.Collectors;
 @Service
 public class FormBuilderService {
     public void applyRulesForMapping(GenerateFormsRequest request) {
-        if (request == null) throw new InvalidFormDefinitionException("Invalid request (null).");
+        if (Objects.nonNull(request)) throw new InvalidFormDefinitionException("Invalid request (null).");
 
         Map<Predicate<GenerateFormsRequest>, String> rules = Map.of(
-            r -> r.getCount() != null
-                    && r.getSteps() != null
+            r -> Objects.nonNull(r.getCount())
+                    && Objects.nonNull(r.getSteps())
                     && r.getCount().equals(r.getSteps().size()),
             "Form number doesn't match number of steps.",
 
-            r -> r.getSteps() != null && r.getSteps().stream().allMatch(
-                    s -> r.getFieldsPerStep() != null
-                            && s.getFields() != null
+            r -> Objects.nonNull(r.getSteps()) && r.getSteps().stream().allMatch(
+                    s -> Objects.nonNull(r.getFieldsPerStep())
+                            && Objects.nonNull(s.getFields())
                             && s.getFields().size() == r.getFieldsPerStep()
             ),
             "Fields number is incorrect."
