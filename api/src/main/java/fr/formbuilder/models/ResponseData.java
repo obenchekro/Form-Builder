@@ -52,8 +52,8 @@ public class ResponseData<T> {
                 .build();
     }
 
-    public static ResponseData<Void> error(int status, String message, List<ErrorDetails> errorDetails) {
-        return ResponseData.<Void>builder()
+    public static <T> ResponseData<T> error(int status, String message, List<ErrorDetails> errorDetails) {
+        return ResponseData.<T>builder()
                 .status(status)
                 .state(RequestState.FAILURE)
                 .message(message)

@@ -1,0 +1,74 @@
+{
+  "layout": {
+    "columns": 3,
+    "gaps": 5
+  },
+  "steps": [
+    {
+      "fields": [
+        {
+          "type": "text",
+          "kind": "input",
+          "required": false,
+          "options": []
+        },
+        {
+          "type": "email",
+          "kind": "input",
+          "required": false,
+          "options": []
+        },
+        {
+          "type": "select",
+          "kind": "select",
+          "required": false,
+          "options": []
+        }
+      ]
+    },
+    {
+      "fields": [
+        {
+          "type": "date",
+          "kind": "input",
+          "required": false,
+          "options": []
+        },
+        {
+          "type": "number",
+          "kind": "input",
+          "required": false,
+          "options": []
+        },
+        {
+          "type": "select",
+          "kind": "select",
+          "required": false,
+          "options": []
+        }
+      ]
+    },
+    {
+      "fields": [
+        {
+          "type": "checkbox",
+          "kind": "select-filter",
+          "required": false,
+          "options": []
+        },
+        {
+          "type": "radio",
+          "kind": "select-filter",
+          "required": false,
+          "options": []
+        },
+        {
+          "type": "file",
+          "kind": "input",
+          "required": false,
+          "options": []
+        }
+      ]
+    }
+  ]
+}

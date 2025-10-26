@@ -1,0 +1,35 @@
+{
+  "count": 3,
+  "title": "Inscription client avancée",
+  "defaultLayout": {
+    "columns": 3,
+    "gaps": 5
+  },
+  "fieldsPerStep": 3,
+  "steps": [
+    {
+      "count": 3,
+      "fields": [
+        { "type": "text", "kind": "input" },
+        { "type": "email", "kind": "input" },
+        { "type": "select", "kind": "select" }
+      ]
+    },
+    {
+      "count": 3,
+      "fields": [
+        { "type": "date", "kind": "input" },
+        { "type": "number", "kind": "input" },
+        { "type": "select", "kind": "select" }
+      ]
+    },
+    {
+      "count": 3,
+      "fields": [
+        { "type": "checkbox", "kind": "select-filter" },
+        { "type": "radio", "kind": "select-filter" },
+        { "type": "file", "kind": "input" }
+      ]
+    }
+  ]
+}

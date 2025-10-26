@@ -1,0 +1,11 @@
+{
+  "id": "customer-form-v1",
+  "title": "Création client",
+  "defaultLayout": {
+    "columns": 12,
+    "gaps": 16
+  },
+  "count": 0,
+  "fieldsPerStep": 1,
+  "steps": []
+}
