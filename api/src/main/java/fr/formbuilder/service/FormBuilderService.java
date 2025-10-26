@@ -19,17 +19,17 @@ public class FormBuilderService {
         if (request == null) throw new InvalidFormDefinitionException("Invalid request (null).");
 
         Map<Predicate<GenerateFormsRequest>, String> rules = Map.of(
-                r -> r.getCount() != null
-                        && r.getSteps() != null
-                        && r.getCount().equals(r.getSteps().size()),
-                "Form number doesn't match number of steps.",
+            r -> r.getCount() != null
+                    && r.getSteps() != null
+                    && r.getCount().equals(r.getSteps().size()),
+            "Form number doesn't match number of steps.",
 
-                r -> r.getSteps() != null && r.getSteps().stream().allMatch(
-                        s -> r.getFieldsPerStep() != null
-                                && s.getFields() != null
-                                && s.getFields().size() == r.getFieldsPerStep()
-                ),
-                "Fields number is incorrect."
+            r -> r.getSteps() != null && r.getSteps().stream().allMatch(
+                    s -> r.getFieldsPerStep() != null
+                            && s.getFields() != null
+                            && s.getFields().size() == r.getFieldsPerStep()
+            ),
+            "Fields number is incorrect."
         );
 
         var failedRules = rules.entrySet().stream()
