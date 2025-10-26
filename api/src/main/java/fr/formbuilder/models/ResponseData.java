@@ -52,7 +52,7 @@ public class ResponseData<T> {
                 .build();
     }
 
-    public static <TErrorDetails> ResponseData<Void> error(int status, String message, List<ErrorDetails> errorDetails) {
+    public static ResponseData<Void> error(int status, String message, List<ErrorDetails> errorDetails) {
         return ResponseData.<Void>builder()
                 .status(status)
                 .state(RequestState.FAILURE)

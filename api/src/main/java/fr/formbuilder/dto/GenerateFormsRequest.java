@@ -46,7 +46,6 @@ public class GenerateFormsRequest {
     @NoArgsConstructor
     @AllArgsConstructor
     public static class PartialField {
-        @NotNull
         private FieldKind kind;
         @NotNull
         private FieldType type;

@@ -3,7 +3,6 @@ package fr.formbuilder.controller;
 import fr.formbuilder.dto.GenerateFormsRequest;
 import fr.formbuilder.dto.FormDefinitionResponse;
 import fr.formbuilder.exception.InvalidFormDefinitionException;
-import fr.formbuilder.mapper.FormBuilderMapper;
 import fr.formbuilder.models.ResponseData;
 import fr.formbuilder.service.FormBuilderService;
 import jakarta.validation.Valid;
@@ -18,8 +17,7 @@ public class FormBuilderController {
     private final FormBuilderService formBuilderService;
     @PostMapping("/construct")
     public ResponseEntity<ResponseData<FormDefinitionResponse>> constructForms(@Valid @RequestBody GenerateFormsRequest request) throws InvalidFormDefinitionException {
-        formBuilderService.applyRulesForMapping(request);
-        FormDefinitionResponse result = FormBuilderMapper.toResponse(request);
-        return ResponseEntity.ok(ResponseData.success("Form generated successfully", result));
+        FormDefinitionResponse formBuilder = formBuilderService.prepareFormRequest(request);
+        return ResponseEntity.ok(ResponseData.success("Form generated successfully", formBuilder));
     }
 }

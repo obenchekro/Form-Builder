@@ -1,5 +1,6 @@
 {
   "count": 1,
+  "fieldsPerStep": 3,
   "forms": [
     {
       "id": "customer-form-v1",
@@ -13,8 +14,8 @@
           "count": 1,
           "fields": [
             { "type": "text", "kind": "input" },
-            { "type": "text", "kind": "input" },
-            { "type": "select", "kind": "select" }
+            { "type": "text" },
+            { "type": "select" }
           ]
         }
       ]
