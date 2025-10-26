@@ -16,6 +16,7 @@ import fr.formbuilder.common.TestCase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
+
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class FormBuilderTest extends FormBuilderAssertionsTest {
     private final FormBuilderController formBuilderController;
