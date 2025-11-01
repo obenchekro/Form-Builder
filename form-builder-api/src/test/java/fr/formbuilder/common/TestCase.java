@@ -14,8 +14,10 @@ import java.util.function.Consumer;
 public class TestCase<T> {
     @NonNull
     String name;
+
     @NonNull
     T data;
+
     @NonNull
     Consumer<T> assertFn;
 
@@ -23,14 +25,11 @@ public class TestCase<T> {
         try {
             assertFn.accept(data);
         } catch (AssertionError e) {
-            throw new AssertionError(String.format("[ %s ] %s", name, e.getMessage()), e);
+            throw new AssertionError(String.format("[%s] %s", name, e.getMessage()), e);
         }
     }
 
     public static <T> void assertAll(String suiteName, Collection<? extends TestCase<T>> cases) {
-        Assertions.assertAll(
-            suiteName,
-            cases.stream().map(testCase -> (Executable) testCase::run)
-        );
+        Assertions.assertAll(suiteName, cases.stream().map(testCase -> (Executable) testCase::run));
     }
 }

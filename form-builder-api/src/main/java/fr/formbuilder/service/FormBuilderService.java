@@ -16,9 +16,10 @@ import java.util.stream.Collectors;
 @Service
 public class FormBuilderService {
     public void applyRulesForMapping(GenerateFormsRequest request) {
-        if (Objects.isNull(request)) throw new InvalidFormDefinitionException("Invalid request (null).");
-
         Map<Predicate<GenerateFormsRequest>, String> rules = Map.of(
+            r -> Objects.nonNull(request),
+            "Invalid request (null).",
+
             r -> Objects.nonNull(r.getCount())
                     && Objects.nonNull(r.getSteps())
                     && r.getCount().equals(r.getSteps().size()),

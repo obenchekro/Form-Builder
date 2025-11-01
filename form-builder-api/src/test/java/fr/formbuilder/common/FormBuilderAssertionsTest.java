@@ -4,6 +4,9 @@ import fr.formbuilder.dto.FormDefinitionResponse;
 import fr.formbuilder.models.ResponseData;
 import org.junit.jupiter.api.Assertions;
 
+import java.util.Comparator;
+import java.util.List;
+import java.util.Objects;
 import java.util.stream.IntStream;
 
 public class FormBuilderAssertionsTest {
@@ -12,7 +15,14 @@ public class FormBuilderAssertionsTest {
         Assertions.assertEquals(expectedResponse.getState(), actualResponse.getState());
         Assertions.assertEquals(expectedResponse.getMessage(), actualResponse.getMessage());
         Assertions.assertEquals(expectedResponse.getData(), actualResponse.getData());
-        Assertions.assertEquals(expectedResponse.getDetails(), actualResponse.getDetails());
+        Assertions.assertEquals(
+            Objects.requireNonNullElse(expectedResponse.getDetails(), List.of()).stream()
+                .sorted(Comparator.comparing(Object::toString, Comparator.nullsFirst(String::compareTo)))
+                .toList(),
+            Objects.requireNonNullElse(actualResponse.getDetails(), List.of()).stream()
+                .sorted(Comparator.comparing(Object::toString, Comparator.nullsFirst(String::compareTo)))
+                .toList()
+        );
     }
 
     protected void assertFormBuilderConditionsVerified(FormDefinitionResponse expectedFormDefResponse, FormDefinitionResponse actualFormDefResponse) {

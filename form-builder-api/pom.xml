@@ -12,7 +12,7 @@
     </parent>
 
     <groupId>fr.form-builder</groupId>
-    <artifactId>api</artifactId>
+    <artifactId>form-builder-api</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>api</name>
     <description>api</description>
